@@ -12,22 +12,24 @@ class IsStaffEditorPermission(permissions.DjangoModelPermissions):
     #     'DELETE': ['%(app_label)s.delete_%(model_name)s'],
     # }
 
-    def has_permission(self, request, view):
-        if not request.user == 2882:
-            return False
-        return super().has_permission(request, view)
-
     # def has_permission(self, request, view):
-    #     user = request.user
-    #     print(user.get_all_permissions())
-    #     if user.is_staff:
-    #         if user.has_perm("products.add_product"):
-    #             return True
-    #         if user.has_perm("products.delete_product"):
-    #             return True
-    #         if user.has_perm("products.change_product"):
-    #             return True
-    #         if user.has_perm("products.view_product"):
-    #             return True
+    #     if not request.user == 2882:
     #         return False
-    #     return False
+    #     return super().has_permission(request, view)
+    #     if not request.user.is_staff:
+    #         return False
+    #     return super().has_permission(request, view)
+
+    def has_permission(self, request, view):
+        user = request.user
+        if user.is_staff:  #acc.to me any permission given to anyone before that admin atomtic activated
+            if user.has_perm("products.add_product"):
+                return True
+            if user.has_perm("products.delete_product"):
+                return True
+            if user.has_perm("products.change_product"):
+                return True
+            if user.has_perm("products.view_product"):
+                return False
+            return False
+        return False
