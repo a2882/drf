@@ -13,7 +13,7 @@ class IsStaffEditorPermission(permissions.DjangoModelPermissions):
     # }
 
     def has_permission(self, request, view):
-        if not request.user.is_cfe:
+        if not request.user == 2882:
             return False
         return super().has_permission(request, view)
 
