@@ -129,13 +129,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # auth_classes = ["rest.framework.authentication.SessionAuthentication",
 #         "rest.framework.authentication.TokenAuthentication"]
 
-rest_framework = {
-    "DEFAULT_AUTHENTICATION_CLASSES":[
-        "rest.framework.authentication.SessionAuthentication",
-        "rest.framework.authentication.TokenAuthentication",
-       # "api.authentication.TokenAuthentication" # for use this go authetication.py and import this overwritten for TokenAuthentication
-    ],
-   
-    
-
-}
+# rest_framework = {
+#     "DEFAULT_AUTHENTICATION_CLASSES":[
+#         "rest.framework.authentication.SessionAuthentication",
+#         "rest.framework.authentication.TokenAuthentication",
+#        # "api.authentication.TokenAuthentication" # for use this go authetication.py and import this overwritten for TokenAuthentication
+#     ],
+#     "DEFAULT_PERMISSION_CLASSES":[
+#         "rest.framework.permissions.IsAuthenticatedorReadOnly"
+#     ]
+# }

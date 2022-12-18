@@ -11,8 +11,8 @@ from .serializers import ProductSerializer
 class ProductListCreateAPIView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    #permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
-
+    authentication_classes = [authentication.SessionAuthentication,authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]
     def perform_create(self, serializer):
         # serializer.save(user=self.request.user)
         title = serializer.validated_data.get('title')
@@ -27,6 +27,7 @@ product_list_create_view = ProductListCreateAPIView.as_view()
 class ProductDetailAPIView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    authentication_classes = [authentication.SessionAuthentication,authentication.TokenAuthentication]
     permission_classes = [permissions.IsAdminUser, IsStaffEditorPermission]    
     # lookup_field = 'pk' ??
 
