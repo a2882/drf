@@ -1,15 +1,16 @@
 from rest_framework import serializers
 from rest_framework.reverse import reverse
-from rest_framework.validators import ValidationError
+from rest_framework.validators import ValidationError 
 from .models import Product
-from .validators import validate_title
+from .validators import validate_title ,validate_title_no_hello
 
 
 class ProductSerializer(serializers.ModelSerializer):
     my_discount = serializers.SerializerMethodField(read_only=True)
     edit_url = serializers.SerializerMethodField(read_only=True)
     url = serializers.HyperlinkedIdentityField(view_name="products-detail",lookup_field = 'pk')
-    title = serializers.CharField(validators=[validate_title])
+
+    title = serializers.CharField(validators=[validate_title_no_hello])
 
 
     class Meta:
