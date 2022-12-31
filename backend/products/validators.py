@@ -9,8 +9,15 @@ def validate_title(value):
     if qs.exists():
         raise serializers.ValidationError(f"{value} is already a product name")
     return value
+
 def validate_title_no_hello(value):
     if "hello" in value.lower():
-        raise serializers.ValidationError(f"hello is not alloewd")
+        raise serializers.ValidationError(f"{value} is not alloewd")
     return value
-unique_product_title = UniqueValidator(queryset=Product.objects.all())
+unique_product_title = UniqueValidator(queryset=Product.objects.all(),lookup='iexact')
+
+# def validate_title_no_hello(value):
+#     if "hello" in value.lower():
+#         raise serializers.ValidationError(f"hello is not alloewd")
+#     return value
+# unique_product_title = UniqueValidator(queryset=Product.objects.all())
