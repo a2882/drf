@@ -10,7 +10,7 @@ class ProductSerializer(serializers.ModelSerializer):
     edit_url = serializers.SerializerMethodField(read_only=True)
     url = serializers.HyperlinkedIdentityField(view_name="products-detail",lookup_field = 'pk')
 
-    title = serializers.CharField(validators=[validate_title_no_hello])
+    title = serializers.CharField(validators=[validate_title_no_hello,validate_title])
 
 
     class Meta:
